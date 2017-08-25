@@ -24,14 +24,14 @@ void dht_task(void *prvParams)
         temperature = humidity = 0;
         GPIO_SetBits(LEDPORT, LED4PIN);
         vTaskPrioritySet(NULL, 3);
+			
         //Read the data from sensor 1
         checksumValid=DHT22_Read(DHT22_DATA_PIN1);
         vTaskPrioritySet(NULL, 2);
         temperature+=DHT22getTemperature();
         humidity+=DHT22getHumidity();
 
-
-        vTaskPrioritySet(NULL, 3);
+				vTaskPrioritySet(NULL, 3);
         //Read the data from sensor 2
         //DHT22_Read(DHT22_DATA_PIN2);
 
