@@ -15,6 +15,7 @@
 #include "semphr.h"
 #include "dht22.h"
 #include "init.h"
+#include "functions.h"
 
 #define STACK_SIZE_MIN 500
 

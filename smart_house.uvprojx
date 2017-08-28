@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, PLL_M=8, PLL_P=2, PLL_N=6, STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\Libraries\CMSIS\Include;.\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\FreeRTOS\portable\RVDS\ARM_CM4F;.\FreeRTOS\include;.\Include;.\Include\Functions</IncludePath>
+              <IncludePath>.\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\Libraries\CMSIS\Include;.\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\FreeRTOS\portable\RVDS\ARM_CM4F;.\FreeRTOS\include;.\Include;.\Include\Functions;.\TM_STM32F4\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -408,6 +408,11 @@
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\misc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -489,6 +494,11 @@
               <FileType>5</FileType>
               <FilePath>.\Include\main.h</FilePath>
             </File>
+            <File>
+              <FileName>functions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Include\Functions\functions.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -498,6 +508,11 @@
               <FileName>dht22.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\Functions\dht22.c</FilePath>
+            </File>
+            <File>
+              <FileName>functions.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Functions\functions.c</FilePath>
             </File>
           </Files>
         </Group>

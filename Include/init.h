@@ -11,6 +11,7 @@
 #include "stm32f4xx_exti.h"
 #include "stm32f4xx_syscfg.h"
 #include "misc.h"
+#include "attributes.h"
 
 
 /* Definition of all the ports, pins and other peripheral devices which are used*/
@@ -52,8 +53,6 @@
 
 static char buffer[80];
 void gpio_init(void);
-void exti_init(void);
-void nvic_init(void);
 void USART2_Config(void);
-void sendToUart(char *);
 void TIM2_Init(void);
+void exti_init(void);
