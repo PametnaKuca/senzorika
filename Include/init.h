@@ -26,11 +26,6 @@
 #define LED4PIN GPIO_Pin_15
 /* -------------------------------------------------------*/
 
-#define BUTTONPORT GPIOA
-#define BUTTONRCC RCC_AHB1Periph_GPIOA
-#define BUTTONPIN GPIO_Pin_0
-
-
 #define USARTID USART2
 #define USARTRCC RCC_APB1Periph_USART2
 
@@ -44,15 +39,7 @@
 #define DHT22_REFRESHRATE 3000	//refresh rate in ms
 /* ------------------------------------------------------*/
 
-/* Vanjski prekidi */
-
-#define EXTIPORT EXTI_PortSourceGPIOA
-#define SYSRCC RCC_APB2Periph_SYSCFG
-#define EXTIPIN EXTI_PinSource0
-
-
 static char buffer[80];
 void gpio_init(void);
 void USART2_Config(void);
 void TIM2_Init(void);
-void exti_init(void);

@@ -12,7 +12,6 @@
 void gpio_init(void)
 {
 	RCC_AHB1PeriphClockCmd(LEDRCC, ENABLE);
-	RCC_AHB1PeriphClockCmd(BUTTONRCC, ENABLE);
 
 	GPIO_InitTypeDef GPIO_LEDS;
 	GPIO_LEDS.GPIO_Mode=GPIO_Mode_OUT;
@@ -20,41 +19,9 @@ void gpio_init(void)
 	GPIO_LEDS.GPIO_Pin= LED1PIN | LED2PIN | LED3PIN | LED4PIN;
 	GPIO_LEDS.GPIO_PuPd=GPIO_PuPd_DOWN;
 	GPIO_LEDS.GPIO_Speed=GPIO_Speed_100MHz;
-	GPIO_Init(LEDPORT, &GPIO_LEDS);
-	
-	
-	GPIO_InitTypeDef GPIO_BUTTON;
-	GPIO_BUTTON.GPIO_Mode=GPIO_Mode_IN;
-	GPIO_BUTTON.GPIO_OType=GPIO_OType_PP;
-	GPIO_BUTTON.GPIO_Pin=BUTTONPIN;
-	GPIO_BUTTON.GPIO_PuPd=GPIO_PuPd_DOWN;
-	GPIO_BUTTON.GPIO_Speed=GPIO_Speed_100MHz;
-	GPIO_Init(BUTTONPORT, &GPIO_BUTTON);
-		
+	GPIO_Init(LEDPORT, &GPIO_LEDS);		
 }
 
-/* Vanjski prekidi */
-
-void exti_init(void)
-{
-	RCC_AHB2PeriphClockCmd(SYSRCC, ENABLE);
-	SYSCFG_EXTILineConfig(EXTIPORT, EXTIPIN);
-	
-	EXTI_InitTypeDef EXTI_Button;
-	EXTI_Button.EXTI_Line = EXTI_Line0;
-	EXTI_Button.EXTI_Mode = EXTI_Mode_Interrupt;
-	EXTI_Button.EXTI_Trigger = EXTI_Trigger_Rising;
-	EXTI_Button.EXTI_LineCmd = ENABLE;
-	EXTI_Init(&EXTI_Button);
-	
-	NVIC_InitTypeDef NVIC_Button;
-	NVIC_Button.NVIC_IRQChannel = EXTI0_IRQn;
-	NVIC_Button.NVIC_IRQChannelPreemptionPriority = 0x00;
-	NVIC_Button.NVIC_IRQChannelSubPriority = 0x00;
-	NVIC_Button.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_Button);
-	
-}
 
 void USART2_Config(void)
 {
