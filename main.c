@@ -11,8 +11,7 @@ int main()
 	//DHT22_Init(DHT22_DATA_PIN2);
 	
 	TM_HCSR04_Init(&HCSR04, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
-	
-	xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+	//xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
 	
 	vTaskStartScheduler();
@@ -69,7 +68,7 @@ void space_mapping(void *prvParameters)
 	static int number=( gearratio * (ANGLE/ANGLEmin) );
 	static float distance;
 	while(1)
-	{
+	{		
 			if (position >= ANGLEmax ) //In final position change the direction of the motor.
 				{
 					direction=-direction;
@@ -95,12 +94,12 @@ void space_mapping(void *prvParameters)
 				}
 
 				distance = TM_HCSR04_Read(&HCSR04);
-				vTaskDelay(10/portTICK_RATE_MS);
+				Delayms(10);
 				
 				//Piši na seriju
 				sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
 				sendToUart(&message[0]);
 				
-				vTaskDelay(1000/portTICK_RATE_MS);
+				Delayms(1000);
 	}
 }

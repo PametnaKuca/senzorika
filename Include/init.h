@@ -43,9 +43,9 @@
 /* ------------------------------------------------------*/
 
 /* ------------------------------------------------------*/
-#define HCSRPORT GPIOC
-#define HCSR_ECHO_PIN	GPIO_Pin_0
-#define HCSR_TRIG_PIN GPIO_Pin_1
+#define HCSRPORT GPIOB
+#define HCSR_ECHO_PIN	GPIO_Pin_5
+#define HCSR_TRIG_PIN GPIO_Pin_4
 /* ------------------------------------------------------*/
 
 static char message[80];

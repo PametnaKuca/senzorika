@@ -7,7 +7,7 @@ uint8_t TM_HCSR04_Init(TM_HCSR04_t* HCSR04, GPIO_TypeDef* ECHO_GPIOx, uint16_t E
         TM_DELAY_Init();
         HCSR04->ECHO_GPIOx = HCSRPORT;
         HCSR04->ECHO_GPIO_Pin = HCSR_ECHO_PIN;//output
-        HCSR04->TRIGGER_GPIOx = GPIOC;	
+        HCSR04->TRIGGER_GPIOx = HCSRPORT;	
         HCSR04->TRIGGER_GPIO_Pin = HCSR_TRIG_PIN;//input
 
         

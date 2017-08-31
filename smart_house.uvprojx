@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER, PLL_M=8, PLL_P=2, PLL_N=6, STM32F411xE</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\Libraries\CMSIS\Include;.\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\FreeRTOS\portable\RVDS\ARM_CM4F;.\Include;.\Include\Functions;.\TM_STM32F4\include;.\FreeRTOS\include</IncludePath>
+              <IncludePath>.\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\Libraries\CMSIS\Include;.\FreeRTOS\include;.\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\Include;.\Include\Functions;.\TM_STM32F4\include;.\FreeRTOS\portable\RVDS\ARM_CM4F</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -414,16 +414,26 @@
               <FileType>1</FileType>
               <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_pwr.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>FreeRTOS</GroupName>
           <Files>
-            <File>
-              <FileName>croutine.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\FreeRTOS\croutine.c</FilePath>
-            </File>
             <File>
               <FileName>event_groups.c</FileName>
               <FileType>1</FileType>
@@ -453,6 +463,11 @@
               <FileName>port.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FreeRTOS\portable\RVDS\ARM_CM4F\port.c</FilePath>
+            </File>
+            <File>
+              <FileName>heap_4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FreeRTOS\portable\MemMang\heap_4.c</FilePath>
             </File>
           </Files>
         </Group>

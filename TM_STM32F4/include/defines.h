@@ -30,6 +30,10 @@
 
 #define TM_DISCO_STM32F411_DISCOVERY
 
+#define TM_DELAY_TIM				TIM4
+#define TM_DELAY_TIM_IRQ			TIM4_IRQn
+#define TM_DELAY_TIM_IRQ_HANDLER	TIM4_IRQHandler
+
 typedef enum {
 	left,
 	middle,
