@@ -8,6 +8,7 @@
 #include "task.h"
 #include "functions.h"
 
+
 /**
 *	This function is used to send a string of chars to the serial port.
 *	@param	first	Pointer to the first element of the input char array.

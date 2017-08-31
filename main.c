@@ -10,7 +10,10 @@ int main()
 	//Not accessible for now.
 	//DHT22_Init(DHT22_DATA_PIN2);
 	
+	TM_HCSR04_Init(&HCSR04, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
+	
 	xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+	xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
 	
 	vTaskStartScheduler();
 	while(1);
@@ -53,5 +56,51 @@ void dht_task(void *prvParams)
         GPIO_ResetBits(LEDPORT, LED4PIN);
 
         vTaskDelay(3000/portTICK_RATE_MS);
+	}
+}
+
+/**
+
+**/
+
+void space_mapping(void *prvParameters)
+{
+	static int i,position=0, direction=-1;
+	static int number=( gearratio * (ANGLE/ANGLEmin) );
+	static float distance;
+	while(1)
+	{
+			if (position >= ANGLEmax ) //In final position change the direction of the motor.
+				{
+					direction=-direction;
+					position=ANGLEmax;   
+				}
+
+				else if ( position <= 0 ) //In final position change the direction of the motor.
+				{
+					direction=-direction;
+					position=0;     
+				}
+
+				if ( direction > 0)
+				{
+					for (i=0;i<number;i++) move_positive();  //Move the sensor in positive direction.
+					position+=ANGLE;									
+				}
+
+				else
+				{
+					for (i=0;i<number;i++) move_negative();  //Move the sensor in negative direction.
+					position-=ANGLE;									 
+				}
+
+				distance = TM_HCSR04_Read(&HCSR04);
+				vTaskDelay(10/portTICK_RATE_MS);
+				
+				//Piši na seriju
+				sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
+				sendToUart(&message[0]);
+				
+				vTaskDelay(1000/portTICK_RATE_MS);
 	}
 }

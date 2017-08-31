@@ -11,7 +11,10 @@
 #include "stm32f4xx_exti.h"
 #include "stm32f4xx_syscfg.h"
 #include "misc.h"
-#include "attributes.h"
+#include "attributes.h"		
+#include "tm_stm32f4_hcsr04.h"
+#include "step_motor.h"
+
 
 
 /* Definition of all the ports, pins and other peripheral devices which are used*/
@@ -39,7 +42,13 @@
 #define DHT22_REFRESHRATE 3000	//refresh rate in ms
 /* ------------------------------------------------------*/
 
-static char buffer[80];
+/* ------------------------------------------------------*/
+#define HCSRPORT GPIOC
+#define HCSR_ECHO_PIN	GPIO_Pin_0
+#define HCSR_TRIG_PIN GPIO_Pin_1
+/* ------------------------------------------------------*/
+
+static char message[80];
 void gpio_init(void);
 void USART2_Config(void);
 void TIM2_Init(void);
