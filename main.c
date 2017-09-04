@@ -3,15 +3,11 @@
 int main()
 {	
 	gpio_init();
-	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_4);
-	USART2_Config();
-	TIM2_Init();
 	DHT22_Init(DHT22_DATA_PIN1);
-	//Not accessible for now.
-	//DHT22_Init(DHT22_DATA_PIN2);
-	
 	TM_HCSR04_Init(&HCSR04, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
-	//xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+	USART2_Config();
+	
+	xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
 	
 	vTaskStartScheduler();
@@ -37,29 +33,20 @@ void dht_task(void *prvParams)
         //Read the data from sensor 1
         checksumValid=DHT22_Read(DHT22_DATA_PIN1);
         vTaskPrioritySet(NULL, 2);
+			
         temperature+=DHT22getTemperature();
         humidity+=DHT22getHumidity();
 			
-				vTaskPrioritySet(NULL, 3);
-        //Read the data from sensor 2. Not accessible for now.
-        //DHT22_Read(DHT22_DATA_PIN2);
-
-        temperature+=DHT22getTemperature();
-        humidity+=DHT22getHumidity();
-
-        temperature/=NUMBER_OF_SESNORS;
-        humidity/=NUMBER_OF_SESNORS;
-			
-        vTaskPrioritySet(NULL, 2);
-
         GPIO_ResetBits(LEDPORT, LED4PIN);
 
-        vTaskDelay(3000/portTICK_RATE_MS);
-	}
+        vTaskDelay(DHT22_REFRESHRATE/portTICK_RATE_MS);
+		}
 }
 
 /**
-
+* The space_mapping task executes periodically and performs two actions. It moves the step motor in 360° range. On top of that motor
+* there is ultrosonic sensor which reads the distance from the nearest object for every step of the rotation. Step of the rotation is 
+* defined in step_motor.h.
 **/
 
 void space_mapping(void *prvParameters)

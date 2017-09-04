@@ -60,28 +60,3 @@ void USART2_Config(void)
         NVIC_InitStructure.NVIC_IRQChannelCmd 	=	ENABLE;
         NVIC_Init(&NVIC_InitStructure);
 }
-
-void TIM2_Init(void) {
-  uint16_t PrescalerValue = 0;
-
-  TIM_TimeBaseInitTypeDef   TIM_TimeBaseStructure;
-  TIM_OCInitTypeDef         TIM_OCInitStructure;
-
-  /* TIM2 clock enable */
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-  TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
-  TIM_OCStructInit(&TIM_OCInitStructure);
-
-  /* Compute the prescaler value */
-  PrescalerValue = (uint16_t) (SystemCoreClock / 1000000) - 1;
-
-  /* Time base configuration */
-  TIM_TimeBaseStructure.TIM_Period = 65535 - 1;      //in uSecs
-  TIM_TimeBaseStructure.TIM_Prescaler = PrescalerValue;
-  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
-
-  TIM_Cmd(TIM2, ENABLE);
-}

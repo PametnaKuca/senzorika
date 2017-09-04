@@ -21,7 +21,7 @@ void init_step()
     GPIO_Init(STEP_PORT, &GPIO_STEP);
 }
 
-//preuredi ovo. To je funkcija koja vozi motor u neku od strana. Pogledaj ove LED diode?
+//preuredi ovo. To je funkcija koja vozi motor u neku od strana. Pogledaj ove LED diode kad stigne motor?
 
 void move_positive() {									//postavljanje vrijednosti pinova kao sto je prikazano u matrici steps
 	uint8_t j;

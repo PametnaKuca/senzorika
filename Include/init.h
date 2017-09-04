@@ -36,19 +36,29 @@
 #define DHT22_GPIO	GPIOA
 
 #define DHT22_DATA_PIN1 GPIO_Pin_10
-#define DHT22_DATA_PIN2 GPIO_Pin_8
+#define DHT22_DATA_PIN2 GPIO_Pin_8		// In case you want to add another sensor. This requires you to write additional code.
 
 #define DHT22_TIM	TIM2
+#define DHT22RCC RCC_APB1Periph_TIM2
 #define DHT22_REFRESHRATE 3000	//refresh rate in ms
 /* ------------------------------------------------------*/
 
-/* ------------------------------------------------------*/
+/* HCSR ultrasonic sensor port, pins and timer ----------*/
 #define HCSRPORT GPIOB
 #define HCSR_ECHO_PIN	GPIO_Pin_5
 #define HCSR_TRIG_PIN GPIO_Pin_4
+
+#define TM_DELAY_TIM	TIM4
+#define TM_DELAY_TIM_IRQ	TIM4_IRQn
+#define TM_DELAY_TIM_IRQ_HANDLER	TIM4_IRQHandler
+/* ------------------------------------------------------*/
+
+/* Step motor port and pins -----------------------------*/
+#define STEP_PORT GPIOB
+#define STEP_PIN GPIO_Pin_0
+#define STEPRCC RCC_AHB1Periph_GPIOB
 /* ------------------------------------------------------*/
 
 static char message[80];
 void gpio_init(void);
 void USART2_Config(void);
-void TIM2_Init(void);

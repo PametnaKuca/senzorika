@@ -15,6 +15,35 @@ DHT 22 humidity and temperature sensor library
 /*
   configure DHT22_DATA as input
  */
+ 
+/* Added in order to have everything in one file. */
+
+void DHT22_TIM_Init(void) {
+  uint16_t PrescalerValue = 0;
+
+  TIM_TimeBaseInitTypeDef   TIM_TimeBaseStructure;
+  TIM_OCInitTypeDef         TIM_OCInitStructure;
+
+  /* DHT22_TIM clock enable */
+  RCC_APB1PeriphClockCmd(DHT22RCC, ENABLE);
+
+  TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
+  TIM_OCStructInit(&TIM_OCInitStructure);
+
+  /* Compute the prescaler value */
+  PrescalerValue = (uint16_t) (SystemCoreClock / 1000000) - 1;
+
+  /* Time base configuration */
+  TIM_TimeBaseStructure.TIM_Period = 65535 - 1;      //in uSecs
+  TIM_TimeBaseStructure.TIM_Prescaler = PrescalerValue;
+  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
+
+  TIM_Cmd(DHT22_TIM, ENABLE);
+}
+
+
 void DHT22pinIn(uint16_t DHT22_DATA_PIN){
   GPIO_InitTypeDef GPIO_InitStructure;
   GPIO_InitStructure.GPIO_Pin =  DHT22_DATA_PIN;
@@ -41,6 +70,7 @@ void DHT22pinOut(uint16_t DHT22_DATA_PIN){
 
 
 void DHT22_Init(uint16_t DHT22_DATA_PIN){
+	DHT22_TIM_Init();
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
   DHT22pinOut(DHT22_DATA_PIN);
   /* hold DHT22 in standby state */
