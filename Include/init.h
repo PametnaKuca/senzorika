@@ -27,6 +27,10 @@
 #define LED2PIN GPIO_Pin_13
 #define LED3PIN GPIO_Pin_14
 #define LED4PIN GPIO_Pin_15
+
+#define BUTTONPIN GPIO_Pin_0
+#define BUTTONPORT GPIOA
+#define BUTTONRCC RCC_AHB1Periph_GPIOA
 /* -------------------------------------------------------*/
 
 #define USARTID USART2

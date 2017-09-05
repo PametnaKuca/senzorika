@@ -27,13 +27,12 @@ Project File Date:  08/31/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling main.c...
-main.c(28): warning:  #550-D: variable "checksumValid"  was set but never used
-          bool checksumValid;
-main.c: 1 warning, 0 errors
+compiling functions.c...
 linking...
-Program Size: Code=19808 RO-data=656 RW-data=228 ZI-data=79044  
-".\Objects\smart_house.axf" - 0 Error(s), 1 Warning(s).
+.\Objects\smart_house.axf: Error: L6218E: Undefined symbol isUserValid (referred from main.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+".\Objects\smart_house.axf" - 1 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -63,7 +62,8 @@ Package Vendor: Keil
       Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f411xe.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-Build Time Elapsed:  00:00:02
+Target not created.
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

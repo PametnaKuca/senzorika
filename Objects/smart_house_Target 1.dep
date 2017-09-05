@@ -576,8 +576,8 @@ I (.\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x59A6C854)
 I (.\FreeRTOS\include\mpu_wrappers.h)(0x59A6C850)
 I (.\FreeRTOS\include\task.h)(0x59A6C850)
 I (.\FreeRTOS\include\list.h)(0x59A6C850)
-F (.\main.c)(0x59AD0890)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\Include\main.h)(0x59A7C32F)
+F (.\main.c)(0x59AE9B2C)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\Include\main.h)(0x59AE9FDD)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x59A6C874)
 I (.\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x59A6C85A)
 I (.\Libraries\CMSIS\Include\core_cm4.h)(0x59A6C873)
@@ -622,7 +622,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F65B18)
 I (.\FreeRTOS\include\semphr.h)(0x59A6C850)
 I (.\FreeRTOS\include\queue.h)(0x59A6C850)
 I (.\Include\Functions\dht22.h)(0x59A6C854)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
@@ -631,13 +631,13 @@ I (.\TM_STM32F4\include\tm_stm32f4_delay.h)(0x59A7C8C8)
 I (.\TM_STM32F4\include\tm_stm32f4_timer_properties.h)(0x59A6C876)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599C1B48)
 I (.\TM_STM32F4\include\gpio.h)(0x59A6C876)
-I (.\Include\Functions\functions.h)(0x59A6C854)
+I (.\Include\Functions\functions.h)(0x59AEA17C)
 I (.\TM_STM32F4\include\tm_stm32f4_pwm.h)(0x59A6C876)
 I (.\TM_STM32F4\include\tm_stm32f4_gpio.h)(0x59A6C876)
 I (.\TM_STM32F4\include\tm_stm32f4_mfrc522.h)(0x59A6C876)
 I (.\TM_STM32F4\include\tm_stm32f4_spi.h)(0x59A6C876)
-F (.\Source\init.c)(0x59AD0463)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
-I (.\Include\init.h)(0x59AD07A2)
+F (.\Source\init.c)(0x59AD3DFB)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
+I (.\Include\init.h)(0x59AD1573)
 I (.\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x59A6C85A)
 I (.\Libraries\CMSIS\Include\core_cm4.h)(0x59A6C873)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F65B18)
@@ -674,10 +674,10 @@ I (.\TM_STM32F4\include\tm_stm32f4_delay.h)(0x59A7C8C8)
 I (.\TM_STM32F4\include\tm_stm32f4_timer_properties.h)(0x59A6C876)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599C1B48)
 I (.\TM_STM32F4\include\gpio.h)(0x59A6C876)
-F (.\Include\init.h)(0x59AD07A2)()
+F (.\Include\init.h)(0x59AD1573)()
 F (.\Include\Functions\dht22.h)(0x59A6C854)()
-F (.\Include\main.h)(0x59A7C32F)()
-F (.\Include\Functions\functions.h)(0x59A6C854)()
+F (.\Include\main.h)(0x59AE9FDD)()
+F (.\Include\Functions\functions.h)(0x59AEA17C)()
 F (.\Include\Functions\step_motor.h)(0x59AD0848)()
 F (.\Source\Functions\dht22.c)(0x59AD04C7)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\dht22.o --omf_browse .\objects\dht22.crf --depend .\objects\dht22.d)
 I (.\Include\Functions\dht22.h)(0x59A6C854)
@@ -710,7 +710,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F65B18)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
@@ -719,7 +719,7 @@ I (.\TM_STM32F4\include\tm_stm32f4_delay.h)(0x59A7C8C8)
 I (.\TM_STM32F4\include\tm_stm32f4_timer_properties.h)(0x59A6C876)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599C1B48)
 I (.\TM_STM32F4\include\gpio.h)(0x59A6C876)
-F (.\Source\Functions\functions.c)(0x59A7B756)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\functions.o --omf_browse .\objects\functions.crf --depend .\objects\functions.d)
+F (.\Source\Functions\functions.c)(0x59AEA7D0)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\functions.o --omf_browse .\objects\functions.crf --depend .\objects\functions.d)
 I (.\FreeRTOS\include\FreeRTOS.h)(0x59A6C850)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F65B18)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F65B18)
@@ -758,10 +758,10 @@ I (.\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x59A6C854)
 I (.\FreeRTOS\include\mpu_wrappers.h)(0x59A6C850)
 I (.\FreeRTOS\include\task.h)(0x59A6C850)
 I (.\FreeRTOS\include\list.h)(0x59A6C850)
-I (.\Include\Functions\functions.h)(0x59A6C854)
+I (.\Include\Functions\functions.h)(0x59AEA17C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F65B18)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x57F65B18)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
@@ -802,7 +802,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\tm_stm32f4_delay.h)(0x59A7C8C8)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\TM_STM32F4\include\gpio.h)(0x59A6C876)
@@ -839,7 +839,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -877,7 +877,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -917,7 +917,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -957,7 +957,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -995,7 +995,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1035,7 +1035,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1074,7 +1074,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
 I (.\TM_STM32F4\include\tm_stm32f4_delay.h)(0x59A7C8C8)
@@ -1112,7 +1112,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 F (.\TM_STM32F4\src\tm_stm32f4_library_template.c)(0x59A6C876)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\tm_stm32f4_library_template.o --omf_browse .\objects\tm_stm32f4_library_template.crf --depend .\objects\tm_stm32f4_library_template.d)
-F (.\TM_STM32F4\src\tm_stm32f4_mfrc522.c)(0x59A6C876)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\tm_stm32f4_mfrc522.o --omf_browse .\objects\tm_stm32f4_mfrc522.crf --depend .\objects\tm_stm32f4_mfrc522.d)
+F (.\TM_STM32F4\src\tm_stm32f4_mfrc522.c)(0x59AD3630)(--c99 -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections -I .\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I .\Libraries\CMSIS\Include -I .\FreeRTOS\include -I .\Libraries\STM32F4xx_StdPeriph_Driver\inc -I .\Include -I .\Include\Functions -I .\TM_STM32F4\include -I .\FreeRTOS\portable\RVDS\ARM_CM4F-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.1.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -DPLL_M="8" -DPLL_P="2" -DPLL_N="6" -DSTM32F411xE-o .\objects\tm_stm32f4_mfrc522.o --omf_browse .\objects\tm_stm32f4_mfrc522.crf --depend .\objects\tm_stm32f4_mfrc522.d)
 I (.\TM_STM32F4\include\tm_stm32f4_mfrc522.h)(0x59A6C876)
 I (.\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x59A6C85A)
 I (.\Libraries\CMSIS\Include\core_cm4.h)(0x59A6C873)
@@ -1144,7 +1144,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\tm_stm32f4_spi.h)(0x59A6C876)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1186,7 +1186,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\tm_stm32f4_timer_properties.h)(0x59A6C876)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1225,7 +1225,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1265,7 +1265,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1305,7 +1305,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1345,7 +1345,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1383,7 +1383,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)
@@ -1422,7 +1422,7 @@ I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x59A6C874)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x59A6C873)
 I (.\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h)(0x59A6C873)
 I (.\TM_STM32F4\include\defines.h)(0x59AD003B)
-I (.\Include\init.h)(0x59AD07A2)
+I (.\Include\init.h)(0x59AD1573)
 I (.\TM_STM32F4\include\attributes.h)(0x59A6C875)
 I (.\TM_STM32F4\include\tm_stm32f4_hcsr04.h)(0x59A6C876)
 I (.\Include\Functions\step_motor.h)(0x59AD0848)

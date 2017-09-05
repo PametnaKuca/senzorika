@@ -5,10 +5,19 @@ int main()
 	gpio_init();
 	DHT22_Init(DHT22_DATA_PIN1);
 	TM_HCSR04_Init(&HCSR04, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
+	//initialize timer1 as pwm output with frequency of 50kHZ
+  TM_PWM_InitTimer(TIM1,&servo_timer,50);
+	//channels and pinspack defined in   "tm_stm32f4_pwm.h"
+	TM_PWM_InitChannel(&servo_timer, TM_PWM_Channel_2, TM_PWM_PinsPack_1);
+	//set initial postion as closed
+  TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);
+	//rfid module init
+	TM_MFRC522_Init();
 	USART2_Config();
 	
-	xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
-	xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
+	//xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+	//xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
+	xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 2, &RFIDhandle);
 	
 	vTaskStartScheduler();
 	while(1);
@@ -89,4 +98,47 @@ void space_mapping(void *prvParameters)
 				
 				Delayms(1000);
 	}
+}
+
+/**
+*
+*/
+
+void rfid_task(void *prvParameters)
+{
+	static bool aux_flag=false;
+	static uint32_t timerval=0;
+	static uint8_t id[5];
+	
+
+    while(1)
+    {
+        //checks if card is present
+        if(TM_MFRC522_Check(id)==MI_OK){
+						//Privremeni ispis
+						sprintf(message, "ID: %d %d %d %d %d\n\r", id[0],id[1],id[2],id[3],id[4]);
+						sendToUart(&message[0]);
+					
+            //check if user is valid
+            if(isUserValid(&id[0])){
+                GPIO_SetBits(LEDPORT,LED1PIN);
+                TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MIN); //grant access
+                aux_flag=true;
+                timerval=xTaskGetTickCount()/portTICK_RATE_MS;
+            }
+            else
+                GPIO_SetBits(LEDPORT,LED3PIN); //red light for unauthorized user
+        }
+        else{
+            GPIO_ResetBits(LEDPORT,LED3PIN | LED1PIN);
+        }
+
+        //prohibit enterance if timeout period expires
+        if((xTaskGetTickCount()/portTICK_RATE_MS)-timerval > servo_const && aux_flag){
+                TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);
+                aux_flag=false;
+        }
+				
+        vTaskDelay(200/portTICK_RATE_MS);
+    }
 }
