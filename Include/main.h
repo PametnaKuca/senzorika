@@ -27,12 +27,13 @@
 #define SERVO_MIN		1300 // servo min(right)
 #define SERVO_MIDDLE	(SERVO_MIN + (SERVO_MAX - SERVO_MIN) / 2)
 
+//define user info constants
+#define MAX_USER 50
+
 TM_PWM_TIM_t servo_timer;
 volatile int servo_const=3000;
 
 TM_HCSR04_t HCSR04;
-
-atom *userList;
 
 //freeRTOS task hanlders
 static TaskHandle_t tHandDHT = NULL;

@@ -30,49 +30,13 @@ bool compareID(uint8_t *id1, uint8_t *id2)
 	return false;
 }
 
-void initList(List *list)
+bool isUserValid(User *userList,uint8_t numUser, uint8_t* ID)
 {
-	list->top = NULL;
-}
-
-atom *search(List *list, uint8_t *id)
-{
-	atom *p;
-	for (p = list->top; p!=NULL; p=p->next)
+	uint8_t i;
+	for (i=0; i<numUser; i++)
 	{
-		if(compareID(id,&(p->element.ID[0])))
-			return p;
-	}
-	return NULL;
-}
-
-bool addToList(List *list, User element)
-{
-	atom *newUser;
-	if((newUser = (atom*) malloc(sizeof(atom))) != NULL)
-	{
-		newUser->element = element;
-		newUser->next = list->top;
-		list->top = newUser;
-		return true;
-	}
-	return false;
-}
-		
-bool deleteFromList(List *list, uint8_t *id)
-{
-	atom *p, *trash;
-	for (p=list->top; p!=NULL; p=p->next)
-	{
-		if(p==list->top && compareID(id,&(p->element.ID[0])))
-		{
-
-				list->top = p->next;
-				free(p);
-				return true;
-		}else{
-				
-		}
+		if(compareID((userList+i)->ID,ID))
+			return true;
 	}
 	return false;
 }

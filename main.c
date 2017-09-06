@@ -15,9 +15,9 @@ int main()
 	TM_MFRC522_Init();
 	USART2_Config();
 	
-	//xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
-	//xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
-	xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 2, &RFIDhandle);
+	xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+	xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
+	xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
 	
 	vTaskStartScheduler();
 	while(1);
@@ -47,7 +47,11 @@ void dht_task(void *prvParams)
         humidity+=DHT22getHumidity();
 			
         GPIO_ResetBits(LEDPORT, LED4PIN);
-
+				
+				//Probni ispis
+				sprintf(message, "Temperature: %.5f Humidity: %.5f\n\r", temperature, humidity);
+				sendToUart(&message[0]);	
+				
         vTaskDelay(DHT22_REFRESHRATE/portTICK_RATE_MS);
 		}
 }
@@ -88,15 +92,17 @@ void space_mapping(void *prvParameters)
 					for (i=0;i<number;i++) move_negative();  //Move the sensor in negative direction.
 					position-=ANGLE;									 
 				}
-
+				
+				GPIO_SetBits(LEDPORT, LED2PIN);
 				distance = TM_HCSR04_Read(&HCSR04);
-				Delayms(10);
+				GPIO_ResetBits(LEDPORT, LED2PIN);
+				vTaskDelay(10/portTICK_RATE_MS);
 				
 				//Piši na seriju
 				sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
 				sendToUart(&message[0]);
 				
-				Delayms(1000);
+				vTaskDelay(1000/portTICK_RATE_MS);
 	}
 }
 
@@ -109,6 +115,28 @@ void rfid_task(void *prvParameters)
 	static bool aux_flag=false;
 	static uint32_t timerval=0;
 	static uint8_t id[5];
+	static User newUser;
+	static User allUsers[MAX_USER];
+	static uint8_t numberOfUsers = 0;
+	
+	allUsers[0].ID[0] = 250;
+	allUsers[0].ID[1] = 18;
+	allUsers[0].ID[2] = 68;
+	allUsers[0].ID[3] = 224;
+	allUsers[0].ID[4] = 76;
+	strcpy(allUsers[0].firstName,"Marko"); 
+	strcpy(allUsers[0].lastName,"Svec");
+	numberOfUsers = 1;
+	
+	allUsers[1].ID[0] = 202;
+	allUsers[1].ID[1] = 210;
+	allUsers[1].ID[2] = 104;
+	allUsers[1].ID[3] = 224;
+	allUsers[1].ID[4] = 144;
+	strcpy(allUsers[1].firstName,"Adam"); 
+	strcpy(allUsers[1].lastName,"Sedmak");
+	numberOfUsers = 2;
+	
 	
 
     while(1)
@@ -120,7 +148,7 @@ void rfid_task(void *prvParameters)
 						sendToUart(&message[0]);
 					
             //check if user is valid
-            if(isUserValid(&id[0])){
+            if(isUserValid(&allUsers[0], numberOfUsers, &id[0])){
                 GPIO_SetBits(LEDPORT,LED1PIN);
                 TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MIN); //grant access
                 aux_flag=true;
