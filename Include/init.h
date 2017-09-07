@@ -65,6 +65,15 @@
 #define STEPRCC RCC_AHB1Periph_GPIOB
 /* ------------------------------------------------------*/
 
+/* MFRC522 and SPI port and pins ------------------------*/
+#define MFRC522_CS_RCC					RCC_AHB1Periph_GPIOA
+#define MFRC522_CS_PORT					GPIOA
+#define MFRC522_CS_PIN					GPIO_Pin_8
+
+#define MFRC522_SPI						SPI1
+#define MFRC522_SPI_PINSPACK			TM_SPI_PinsPack_2
+/* ------------------------------------------------------*/
+
 static char message[80];
 void gpio_init(void);
 void flash_init(void);
