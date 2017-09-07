@@ -333,7 +333,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER, PLL_M=8, PLL_P=2, PLL_N=6, STM32F411xE</Define>
+              <Define>USE_STDPERIPH_DRIVER, HSE_VALUE=8000000, PLL_M=4, PLL_P=8, PLL_N=192, STM32F411xE</Define>
               <Undefine></Undefine>
               <IncludePath>.\Libraries\CMSIS\Device\ST\STM32F4xx\Include;.\Libraries\CMSIS\Include;.\FreeRTOS\include;.\Libraries\STM32F4xx_StdPeriph_Driver\inc;.\Include;.\Include\Functions;.\TM_STM32F4\include;.\FreeRTOS\portable\RVDS\ARM_CM4F</IncludePath>
             </VariousControls>
@@ -428,6 +428,11 @@
               <FileName>stm32f4xx_spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash.c</FilePath>
             </File>
           </Files>
         </Group>

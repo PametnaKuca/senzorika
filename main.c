@@ -2,18 +2,15 @@
 
 int main()
 {	
-	gpio_init();
-	DHT22_Init(DHT22_DATA_PIN1);
-	TM_HCSR04_Init(&HCSR04, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
-	//initialize timer1 as pwm output with frequency of 50kHZ
-  TM_PWM_InitTimer(TIM1,&servo_timer,50);
-	//channels and pinspack defined in   "tm_stm32f4_pwm.h"
-	TM_PWM_InitChannel(&servo_timer, TM_PWM_Channel_2, TM_PWM_PinsPack_1);
-	//set initial postion as closed
-  TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);
-	//rfid module init
-	TM_MFRC522_Init();
-	USART2_Config();
+		gpio_init();
+		flash_init();
+		DHT22_Init(DHT22_DATA_PIN1);
+		TM_HCSR04_Init(&HCSR04, HCSR_RCC, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
+		TM_PWM_InitTimer(TIM1,&servo_timer,50);			//initialize timer1 as pwm output with frequency of 50kHZ
+		TM_PWM_InitChannel(&servo_timer, TM_PWM_Channel_2, TM_PWM_PinsPack_1);	//channels and pinspack defined in   "tm_stm32f4_pwm.h"
+		TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);			//set initial postion as closed
+		TM_MFRC522_Init(); 		//rfid module init
+		USART2_Config();
 	
 	xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
@@ -107,7 +104,7 @@ void space_mapping(void *prvParameters)
 }
 
 /**
-*
+*	RFID task performs 
 */
 
 void rfid_task(void *prvParameters)
@@ -118,28 +115,11 @@ void rfid_task(void *prvParameters)
 	static User newUser;
 	static User allUsers[MAX_USER];
 	static uint8_t numberOfUsers = 0;
-	
-	allUsers[0].ID[0] = 250;
-	allUsers[0].ID[1] = 18;
-	allUsers[0].ID[2] = 68;
-	allUsers[0].ID[3] = 224;
-	allUsers[0].ID[4] = 76;
-	strcpy(allUsers[0].firstName,"Marko"); 
-	strcpy(allUsers[0].lastName,"Svec");
-	numberOfUsers = 1;
-	
-	allUsers[1].ID[0] = 202;
-	allUsers[1].ID[1] = 210;
-	allUsers[1].ID[2] = 104;
-	allUsers[1].ID[3] = 224;
-	allUsers[1].ID[4] = 144;
-	strcpy(allUsers[1].firstName,"Adam"); 
-	strcpy(allUsers[1].lastName,"Sedmak");
-	numberOfUsers = 2;
-	
-	
 
-    while(1)
+	numberOfUsers = initSuperUser(allUsers);
+	writeSuperUser(allUsers);
+	
+  while(1)
     {
         //checks if card is present
         if(TM_MFRC522_Check(id)==MI_OK){

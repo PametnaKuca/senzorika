@@ -10,6 +10,7 @@
 #include "stm32f4xx_usart.h"
 #include "stm32f4xx_exti.h"
 #include "stm32f4xx_syscfg.h"
+#include "stm32f4xx_flash.h"
 #include "misc.h"
 #include "attributes.h"		
 #include "tm_stm32f4_hcsr04.h"
@@ -48,9 +49,10 @@
 /* ------------------------------------------------------*/
 
 /* HCSR ultrasonic sensor port, pins and timer ----------*/
-#define HCSRPORT GPIOB
-#define HCSR_ECHO_PIN	GPIO_Pin_5
-#define HCSR_TRIG_PIN GPIO_Pin_4
+#define HCSRPORT GPIOC
+#define HCSR_RCC 	RCC_AHB1Periph_GPIOC
+#define HCSR_ECHO_PIN	GPIO_Pin_4
+#define HCSR_TRIG_PIN GPIO_Pin_5
 
 #define TM_DELAY_TIM	TIM4
 #define TM_DELAY_TIM_IRQ	TIM4_IRQn
@@ -65,4 +67,5 @@
 
 static char message[80];
 void gpio_init(void);
+void flash_init(void);
 void USART2_Config(void);

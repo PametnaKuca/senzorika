@@ -22,7 +22,7 @@ typedef struct {
 	
 } TM_HCSR04_t;
 		
-uint8_t TM_HCSR04_Init(TM_HCSR04_t* HCSR04, GPIO_TypeDef* ECHO_GPIOx, uint16_t ECHO_GPIO_Pin, GPIO_TypeDef* TRIGGER_GPIOx, uint16_t TRIGGER_GPIO_Pin);
+uint8_t TM_HCSR04_Init(TM_HCSR04_t* HCSR04, uint32_t HCSR_RCC_GPIOx, GPIO_TypeDef* ECHO_GPIOx, uint16_t ECHO_GPIO_Pin, GPIO_TypeDef* TRIGGER_GPIOx, uint16_t TRIGGER_GPIO_Pin);
 	
 float TM_HCSR04_Read(TM_HCSR04_t* HCSR04);
 	

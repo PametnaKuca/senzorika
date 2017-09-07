@@ -34,3 +34,13 @@ bool isUserValid(User *userList,uint8_t numUser, uint8_t* ID);
 * @param id1 and id2 arrays.
 */
 bool compareID(uint8_t *id1, uint8_t *id2);
+/**
+*	Functions returns array of super users throught the userArray pointer
+	@param userArray pointer
+*/
+uint8_t initSuperUser(User *userArray);
+/**
+*	Functions writes hardcoded super users to flash.
+*	@param superUser array.
+*/
+void writeSuperUser(User *superUser);

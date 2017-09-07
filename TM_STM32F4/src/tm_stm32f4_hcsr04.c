@@ -2,9 +2,10 @@
 #include "stm32f4xx_gpio.h"
 #include "init.h"
 	
-uint8_t TM_HCSR04_Init(TM_HCSR04_t* HCSR04, GPIO_TypeDef* ECHO_GPIOx, uint16_t ECHO_GPIO_Pin, GPIO_TypeDef* TRIGGER_GPIOx, uint16_t TRIGGER_GPIO_Pin) {        
+uint8_t TM_HCSR04_Init(TM_HCSR04_t* HCSR04, uint32_t HCSR_RCC_GPIOx, GPIO_TypeDef* ECHO_GPIOx, uint16_t ECHO_GPIO_Pin, GPIO_TypeDef* TRIGGER_GPIOx, uint16_t TRIGGER_GPIO_Pin) {        
         
         TM_DELAY_Init();
+				RCC_APB1PeriphClockCmd(HCSR_RCC_GPIOx, ENABLE);
         HCSR04->ECHO_GPIOx = HCSRPORT;
         HCSR04->ECHO_GPIO_Pin = HCSR_ECHO_PIN;//output
         HCSR04->TRIGGER_GPIOx = HCSRPORT;	

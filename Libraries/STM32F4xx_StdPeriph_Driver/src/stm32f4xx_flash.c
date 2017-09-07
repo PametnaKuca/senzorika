@@ -878,7 +878,7 @@ FLASH_Status FLASH_ProgramByte(uint32_t Address, uint8_t Data)
 
   /* Check the parameters */
   assert_param(IS_FLASH_ADDRESS(Address));
-
+	
   /* Wait for last operation to be completed */
   status = FLASH_WaitForLastOperation();
   
@@ -890,7 +890,7 @@ FLASH_Status FLASH_ProgramByte(uint32_t Address, uint8_t Data)
     FLASH->CR |= FLASH_CR_PG;
   
     *(__IO uint8_t*)Address = Data;
-        
+   
     /* Wait for last operation to be completed */
     status = FLASH_WaitForLastOperation();
 

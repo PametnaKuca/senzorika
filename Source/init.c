@@ -30,6 +30,13 @@ void gpio_init(void)
 	GPIO_Init(BUTTONPORT, &GPIO_BUTTON);
 }
 
+void flash_init(void)
+{
+	FLASH_SetLatency(FLASH_Latency_1);
+	FLASH_PrefetchBufferCmd(ENABLE);
+	FLASH_InstructionCacheCmd(ENABLE);
+	FLASH_DataCacheCmd(ENABLE);
+}
 
 void USART2_Config(void)
 {

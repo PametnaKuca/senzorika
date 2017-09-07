@@ -9,6 +9,7 @@
 ".\objects\stm32f4xx_rtc.o"
 ".\objects\stm32f4xx_pwr.o"
 ".\objects\stm32f4xx_spi.o"
+".\objects\stm32f4xx_flash.o"
 ".\objects\event_groups.o"
 ".\objects\list.o"
 ".\objects\queue.o"
