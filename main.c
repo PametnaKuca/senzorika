@@ -10,7 +10,7 @@ int main()
 		TM_PWM_InitChannel(&servo_timer, TM_PWM_Channel_2, TM_PWM_PinsPack_1);	//channels and pinspack defined in   "tm_stm32f4_pwm.h"
 		TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);			//set initial postion as closed
 		TM_MFRC522_Init(); 		//rfid module init
-		USART2_Config();
+		USART_Config();
 	
 		xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 		xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
@@ -34,9 +34,9 @@ void dht_task(void *prvParams)
         bool checksumValid;
         temperature = humidity = 0;
         GPIO_SetBits(LEDPORT, LED4PIN);
-        vTaskPrioritySet(NULL, 3);
 			
-        //Read the data from sensor 1
+        vTaskPrioritySet(NULL, 3);
+				//Read the data from sensor 1
         checksumValid=DHT22_Read(DHT22_DATA_PIN1);
         vTaskPrioritySet(NULL, 2);
 			
@@ -99,7 +99,7 @@ void space_mapping(void *prvParameters)
 				sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
 				sendToUart(&message[0]);
 				
-				vTaskDelay(1000/portTICK_RATE_MS);
+				vTaskDelay(HCSR_REFRESHRATE/portTICK_RATE_MS);
 	}
 }
 
@@ -147,6 +147,6 @@ void rfid_task(void *prvParameters)
                 aux_flag=false;
         }
 				
-        vTaskDelay(200/portTICK_RATE_MS);
+        vTaskDelay(RFID_REFRESHRATE/portTICK_RATE_MS);
     }
 }

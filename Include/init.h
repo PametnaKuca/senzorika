@@ -17,10 +17,14 @@
 #include "step_motor.h"
 
 
+/**
+*  Definition of all the ports, pins and other peripheral devices
+*	 which are used. Every change you want to concerning different
+*	 pin selection, you are able to do here. If not written differently,
+*  you don't have to alter any other file.
+*/
 
-/* Definition of all the ports, pins and other peripheral devices which are used*/
-
-/* LED port and pins ------------------------------------*/
+/* LED and BUTTON port and pins -------------------------*/
 #define LEDPORT GPIOD
 #define LEDRCC RCC_AHB1Periph_GPIOD
 
@@ -32,16 +36,27 @@
 #define BUTTONPIN GPIO_Pin_0
 #define BUTTONPORT GPIOA
 #define BUTTONRCC RCC_AHB1Periph_GPIOA
-/* -------------------------------------------------------*/
+/* ------------------------------------------------------*/
 
+/* USART rcc, port, pins and interrupt ------------------*/
 #define USARTID USART2
 #define USARTRCC RCC_APB1Periph_USART2
+#define USART_IRQ	USART2_IRQn
+#define USART_AF GPIO_AF_USART2
+
+#define USART_GPIORCC	RCC_AHB1Periph_GPIOA
+#define USARTPORT	GPIOA
+#define USART_TX_PIN	GPIO_Pin_2
+#define TX_PIN_SOURCE	GPIO_PinSource2
+#define USART_RX_PIN  GPIO_Pin_3
+#define RX_PIN_SOURCE GPIO_PinSource3
+/* ------------------------------------------------------*/
 
 /* DH22 port, pins and timer --------------------------- */
 #define DHT22_GPIO	GPIOA
 
 #define DHT22_DATA_PIN1 GPIO_Pin_10
-#define DHT22_DATA_PIN2 GPIO_Pin_8		// In case you want to add another sensor. This requires you to write additional code.
+#define DHT22_DATA_PIN2 GPIO_Pin_7		// In case you want to add another sensor. This requires you to write additional code.
 
 #define DHT22_TIM	TIM2
 #define DHT22RCC RCC_APB1Periph_TIM2
@@ -57,6 +72,7 @@
 #define TM_DELAY_TIM	TIM4
 #define TM_DELAY_TIM_IRQ	TIM4_IRQn
 #define TM_DELAY_TIM_IRQ_HANDLER	TIM4_IRQHandler
+#define HCSR_REFRESHRATE	1000
 /* ------------------------------------------------------*/
 
 /* Step motor port and pins -----------------------------*/
@@ -72,9 +88,10 @@
 /* For SPIx and TM_SPI_PinsPack_x definitions look at tm_stm32f4_spi.h */
 #define MFRC522_SPI						SPI1
 #define MFRC522_SPI_PINSPACK			TM_SPI_PinsPack_2
+#define RFID_REFRESHRATE 200
 /* ------------------------------------------------------*/
 
 static char message[80];
 void gpio_init(void);
 void flash_init(void);
-void USART2_Config(void);
+void USART_Config(void);
