@@ -106,3 +106,19 @@ void writeSuperUser(User *superUser)
 		}
 		FLASH_Lock();	
 }
+
+void sendDHT22(float temperature, float humidity)
+{
+		//Probni ispis
+		sprintf(message, "Temperature: %.5f Humidity: %.5f\n\r", temperature, humidity);
+		sendToUart(&message[0]);
+}
+
+void sendDistance(float distance, int position)
+{
+		//Probni ispis
+		sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
+		sendToUart(&message[0]);
+}
+
+

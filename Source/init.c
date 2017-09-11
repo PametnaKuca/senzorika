@@ -45,7 +45,7 @@ void USART_Config(void)
 				NVIC_InitTypeDef NVIC_InitStructure;
 
         RCC_APB1PeriphClockCmd(USARTRCC, ENABLE);
-        RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+        RCC_AHB1PeriphClockCmd(USART_GPIORCC, ENABLE);
 
 
         GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_2 | USART_RX_PIN;

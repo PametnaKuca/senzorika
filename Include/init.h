@@ -64,10 +64,10 @@
 /* ------------------------------------------------------*/
 
 /* HCSR ultrasonic sensor port, pins and timer ----------*/
-#define HCSRPORT GPIOC
+#define HCSRPORT GPIOE
 #define HCSR_RCC 	RCC_AHB1Periph_GPIOC
-#define HCSR_ECHO_PIN	GPIO_Pin_4
-#define HCSR_TRIG_PIN GPIO_Pin_5
+#define HCSR_ECHO_PIN	GPIO_Pin_7
+#define HCSR_TRIG_PIN GPIO_Pin_8
 
 #define TM_DELAY_TIM	TIM4
 #define TM_DELAY_TIM_IRQ	TIM4_IRQn

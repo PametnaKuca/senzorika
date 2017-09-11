@@ -45,9 +45,7 @@ void dht_task(void *prvParams)
 			
         GPIO_ResetBits(LEDPORT, LED4PIN);
 				
-				//Probni ispis
-				sprintf(message, "Temperature: %.5f Humidity: %.5f\n\r", temperature, humidity);
-				sendToUart(&message[0]);	
+				//sendDHT22(temperature,humidity);	
 				
         vTaskDelay(DHT22_REFRESHRATE/portTICK_RATE_MS);
 		}
@@ -61,9 +59,24 @@ void dht_task(void *prvParams)
 
 void space_mapping(void *prvParameters)
 {
-	static int i,position=0, direction=-1;
+	static int i,j,position=0, direction=-1;
 	static int number=( gearratio * (ANGLE/ANGLEmin) );
 	static float distance;
+	
+	//Initial space mapping. Measure distance for every angle in both directions
+	//and take the mean value as a measured data.
+	int positionNum=ANGLEmax/ANGLE;
+	float initial_map[positionNum];
+	for(j=0;j<positionNum;j++)
+	{
+		for (i=0;i<number;i++) move_positive();
+		GPIO_SetBits(LEDPORT, LED2PIN);
+		initial_map[j] = TM_HCSR04_Read(&HCSR04);
+		GPIO_ResetBits(LEDPORT, LED2PIN);
+	}
+	sprintf(message, "Mapiranje gotovo\n\r");
+	sendToUart(&message[0]);
+	
 	while(1)
 	{		
 			if (position >= ANGLEmax ) //In final position change the direction of the motor.
@@ -93,12 +106,10 @@ void space_mapping(void *prvParameters)
 				GPIO_SetBits(LEDPORT, LED2PIN);
 				distance = TM_HCSR04_Read(&HCSR04);
 				GPIO_ResetBits(LEDPORT, LED2PIN);
+				
 				vTaskDelay(10/portTICK_RATE_MS);
-				
-				//Piši na seriju
-				sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
-				sendToUart(&message[0]);
-				
+				if(abs(distance-initial_map[position/ANGLE]) > DISTANCE_ERROR)
+					sendDistance(distance,position);
 				vTaskDelay(HCSR_REFRESHRATE/portTICK_RATE_MS);
 	}
 }

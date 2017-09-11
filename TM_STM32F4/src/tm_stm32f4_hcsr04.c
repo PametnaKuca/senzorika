@@ -68,7 +68,7 @@ float TM_HCSR04_Read(TM_HCSR04_t* HCSR04) {
 	
         while (TM_GPIO_GetInputPinValue(HCSR04->ECHO_GPIOx, HCSR04->ECHO_GPIO_Pin)) {
 
-                time+= (float)2.5;
+                time+=(float)2.5;
                 Delay(1);
         }
         HCSR04->Distance =  (float)time * HCSR04_NUMBER;	

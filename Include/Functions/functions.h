@@ -36,7 +36,7 @@ bool isUserValid(User *userList,uint8_t numUser, uint8_t* ID);
 bool compareID(uint8_t *id1, uint8_t *id2);
 /**
 *	Functions returns array of super users throught the userArray pointer
-	@param userArray pointer
+*	@param userArray pointer
 */
 uint8_t initSuperUser(User *userArray);
 /**
@@ -44,3 +44,15 @@ uint8_t initSuperUser(User *userArray);
 *	@param superUser array.
 */
 void writeSuperUser(User *superUser);
+/**
+*	The function packs temperature and humidtiy into requested data form
+* and sends it over serial port.
+* @param temperature and humidity
+*/
+void sendDHT22(float temperature, float humidity);
+/**
+*	The functions packs distance and position into requested data form
+* and sends it over serial port.
+*	@param distance and position
+*/
+void sendDistance(float distance, int position);

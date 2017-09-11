@@ -34,6 +34,7 @@ TM_PWM_TIM_t servo_timer;
 volatile int servo_const=3000;
 
 TM_HCSR04_t HCSR04;
+#define DISTANCE_ERROR 5	//maximum tolerated distance error
 
 //freeRTOS task hanlders
 static TaskHandle_t tHandDHT = NULL;
