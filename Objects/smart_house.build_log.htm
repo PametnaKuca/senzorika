@@ -30,12 +30,14 @@ Build target 'Target 1'
 compiling main.c...
 main.c(34): warning:  #550-D: variable "checksumValid"  was set but never used
           bool checksumValid;
-main.c(126): warning:  #177-D: variable "newUser"  was declared but never referenced
+main.c(62): warning:  #177-D: variable "j"  was declared but never referenced
+  	static int i,j,position=0, direction=1;
+main.c(129): warning:  #177-D: variable "newUser"  was declared but never referenced
   	static User newUser;
-main.c: 2 warnings, 0 errors
+main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=28492 RO-data=656 RW-data=248 ZI-data=81056  
-".\Objects\smart_house.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=28512 RO-data=656 RW-data=248 ZI-data=81056  
+".\Objects\smart_house.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -121,4 +121,12 @@ void sendDistance(float distance, int position)
 		sendToUart(&message[0]);
 }
 
-
+void sendInitialMap(float *mapArray)
+{
+		int number = ANGLEmax/ANGLE, position = 0;
+		for(int i=0;i<number+1;i++)
+		{
+			sendDistance(*(mapArray+i), position);
+			position+=ANGLE;
+		}
+}

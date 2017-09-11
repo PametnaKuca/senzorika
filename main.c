@@ -12,9 +12,9 @@ int main()
 		TM_MFRC522_Init(); 		//rfid module init
 		USART_Config();
 	
-		xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 		xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
 		xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
+		xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	
 		vTaskStartScheduler();
 		while(1);
@@ -59,23 +59,26 @@ void dht_task(void *prvParams)
 
 void space_mapping(void *prvParameters)
 {
-	static int i,j,position=0, direction=-1;
+	static int i,j,position=0, direction=1;
 	static int number=( gearratio * (ANGLE/ANGLEmin) );
 	static float distance;
 	
 	//Initial space mapping. Measure distance for every angle in both directions
 	//and take the mean value as a measured data.
 	int positionNum=ANGLEmax/ANGLE;
-	float initial_map[positionNum];
-	for(j=0;j<positionNum;j++)
+	float initial_map[positionNum+1];
+	
+	vTaskSuspendAll ();
+	while(position<=ANGLEmax)
 	{
-		for (i=0;i<number;i++) move_positive();
 		GPIO_SetBits(LEDPORT, LED2PIN);
-		initial_map[j] = TM_HCSR04_Read(&HCSR04);
+		initial_map[position/ANGLE] = TM_HCSR04_Read(&HCSR04);
 		GPIO_ResetBits(LEDPORT, LED2PIN);
+		for (i=0;i<number;i++) move_positive();
+		position+=ANGLE;
 	}
-	sprintf(message, "Mapiranje gotovo\n\r");
-	sendToUart(&message[0]);
+	sendInitialMap(&initial_map[0]);
+	xTaskResumeAll ();
 	
 	while(1)
 	{		

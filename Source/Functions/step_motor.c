@@ -28,7 +28,7 @@ void move_positive() {									//postavljanje vrijednosti pinova kao sto je prik
 	delay_step(10);
 	for (j = 0; j < 4; j++) {
 
-		if (steps[i % 4][j] == 0) {
+		if (steps[i][j] == 0) {
 			if ( j == 0 )
 		{ GPIO_ResetBits(STEP_PORT, STEP_PIN); }
 		else{
@@ -42,15 +42,15 @@ void move_positive() {									//postavljanje vrijednosti pinova kao sto je prik
 			GPIO_SetBits(GPIOA, LEDS[j-1]);
 		}}
 	}
-    i++;
+    i=(i+1)%4;
 }
 
-void move_negative() {								//postavljanje vrijednosti pinova kao sto je prikazano u matrici steps1 (suprotan smjer)
+void move_negative() {								//postavljanje vrijednosti pinova kao sto je prikazano u matrici steps_neg (suprotan smjer)
 	uint8_t j;
 	delay_step(10);
 	for (j = 0; j < 4; j++) {
 
-		if (steps_neg[i % 4][j] == 0) {
+		if (steps_neg[i][j] == 0) {
 			if ( j == 0 )
 		{ GPIO_ResetBits(STEP_PORT, STEP_PIN); }
 		else{
@@ -64,7 +64,7 @@ void move_negative() {								//postavljanje vrijednosti pinova kao sto je prika
 			GPIO_SetBits(GPIOA, LEDS[j-1]);
 		}}
 	}
-    i++;
+    i=(i+1)%4;
 }
 
 void delay_step(uint32_t ms) {			//interni delay, brzina vrtnje motora

@@ -56,3 +56,8 @@ void sendDHT22(float temperature, float humidity);
 *	@param distance and position
 */
 void sendDistance(float distance, int position);
+/**
+* The function sends initial space map over serial port.
+* @param map array
+*/
+void sendInitialMap(float *mapArray);
