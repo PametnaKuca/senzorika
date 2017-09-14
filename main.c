@@ -45,7 +45,7 @@ void dht_task(void *prvParams)
 			
         GPIO_ResetBits(LEDPORT, LED4PIN);
 				
-				//sendDHT22(temperature,humidity);	
+				sendDHT22(temperature,humidity);	
 				
         vTaskDelay(DHT22_REFRESHRATE/portTICK_RATE_MS);
 		}
@@ -118,7 +118,8 @@ void space_mapping(void *prvParameters)
 }
 
 /**
-*	RFID task performs 
+*	RFID task performs RFID user check, sends data throug serial and decides whether
+* to let the user in( to open a ramp) or not.
 */
 
 void rfid_task(void *prvParameters)

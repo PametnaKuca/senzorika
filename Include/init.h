@@ -76,9 +76,9 @@
 /* ------------------------------------------------------*/
 
 /* Step motor port and pins -----------------------------*/
-#define STEP_PORT GPIOB
-#define STEP_PIN GPIO_Pin_0
-#define STEPRCC RCC_AHB1Periph_GPIOB
+#define STEP_PORT GPIOC
+#define STEP_PIN GPIO_Pin_7
+#define STEPRCC RCC_AHB1Periph_GPIOC
 /* ------------------------------------------------------*/
 
 /* MFRC522 and SPI port and pins ------------------------*/
