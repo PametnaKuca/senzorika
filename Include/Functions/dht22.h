@@ -26,7 +26,7 @@ DHT 22 humidity and temperature sensor library
 /* variables ---------------------------------------------------------------*/
 static uint8_t DHT22data[6];
 static float temperature, humidity;
-#define NUMBER_OF_SESNORS 2
+#define NUMBER_OF_SESNORS 1
 /* functions prototypes ----------------------------------------------------*/
 void DHT22pinIn(uint16_t DHT22_DATA_PIN);
 void DHT22pinOut(uint16_t DHT22_DATA_PIN);

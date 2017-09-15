@@ -4,11 +4,12 @@ int main()
 {	
 		gpio_init();
 		flash_init();
+		init_step();
 		DHT22_Init(DHT22_DATA_PIN1);
-		TM_HCSR04_Init(&HCSR04, HCSR_RCC, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN);
-		TM_PWM_InitTimer(TIM1,&servo_timer,50);			//initialize timer1 as pwm output with frequency of 50kHZ
-		TM_PWM_InitChannel(&servo_timer, TM_PWM_Channel_2, TM_PWM_PinsPack_1);	//channels and pinspack defined in   "tm_stm32f4_pwm.h"
-		TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);			//set initial postion as closed
+		TM_HCSR04_Init(&HCSR04, HCSR_RCC, HCSRPORT, HCSR_ECHO_PIN, HCSRPORT, HCSR_TRIG_PIN); //ultrasound sensor init
+		TM_PWM_InitTimer(SERVO_TIM, &servo_timer, 50);			//initialize SERVO_TIM as pwm output with frequency of 50kHZ
+		TM_PWM_InitChannel(&servo_timer, SERVO_CHANNEL, SERVO_PINSPACK);
+		TM_PWM_SetChannelMicros(&servo_timer, SERVO_CHANNEL, SERVO_MAX);			//set initial postion as closed
 		TM_MFRC522_Init(); 		//rfid module init
 		USART_Config();
 	
@@ -36,7 +37,6 @@ void dht_task(void *prvParams)
         GPIO_SetBits(LEDPORT, LED4PIN);
 			
         vTaskPrioritySet(NULL, 3);
-				//Read the data from sensor 1
         checksumValid=DHT22_Read(DHT22_DATA_PIN1);
         vTaskPrioritySet(NULL, 2);
 			
@@ -145,7 +145,7 @@ void rfid_task(void *prvParameters)
             //check if user is valid
             if(isUserValid(&allUsers[0], numberOfUsers, &id[0])){
                 GPIO_SetBits(LEDPORT,LED1PIN);
-                TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MIN); //grant access
+                TM_PWM_SetChannelMicros(&servo_timer, SERVO_CHANNEL, SERVO_MIN); //grant access
                 aux_flag=true;
                 timerval=xTaskGetTickCount()/portTICK_RATE_MS;
             }
@@ -158,7 +158,7 @@ void rfid_task(void *prvParameters)
 
         //prohibit enterance if timeout period expires
         if((xTaskGetTickCount()/portTICK_RATE_MS)-timerval > servo_const && aux_flag){
-                TM_PWM_SetChannelMicros(&servo_timer, TM_PWM_Channel_2, SERVO_MAX);
+                TM_PWM_SetChannelMicros(&servo_timer, SERVO_CHANNEL, SERVO_MAX);
                 aux_flag=false;
         }
 				

@@ -54,9 +54,7 @@
 
 /* DH22 port, pins and timer --------------------------- */
 #define DHT22_GPIO	GPIOA
-
 #define DHT22_DATA_PIN1 GPIO_Pin_10
-#define DHT22_DATA_PIN2 GPIO_Pin_7		// In case you want to add another sensor. This requires you to write additional code.
 
 #define DHT22_TIM	TIM2
 #define DHT22RCC RCC_APB1Periph_TIM2
@@ -76,9 +74,20 @@
 /* ------------------------------------------------------*/
 
 /* Step motor port and pins -----------------------------*/
-#define STEP_PORT GPIOC
-#define STEP_PIN GPIO_Pin_7
-#define STEPRCC RCC_AHB1Periph_GPIOC
+#define PWMA_PORT GPIOB
+#define PWMB_PORT GPIOB
+#define DIRA_PORT GPIOB
+#define DIRB_PORT GPIOD
+
+#define PWMA_RCC  RCC_AHB1Periph_GPIOB
+#define PWMB_RCC 	RCC_AHB1Periph_GPIOB
+#define DIRA_RCC	RCC_AHB1Periph_GPIOB
+#define DIRB_RCC 	RCC_AHB1Periph_GPIOD
+
+#define PWMA_PIN  GPIO_Pin_13
+#define PWMB_PIN	GPIO_Pin_14
+#define DIRA_PIN	GPIO_Pin_15
+#define DIRB_PIN	GPIO_Pin_8
 /* ------------------------------------------------------*/
 
 /* MFRC522 and SPI port and pins ------------------------*/
@@ -89,6 +98,14 @@
 #define MFRC522_SPI						SPI1
 #define MFRC522_SPI_PINSPACK			TM_SPI_PinsPack_2
 #define RFID_REFRESHRATE 200
+/* ------------------------------------------------------*/
+
+/* Servo motor port and pins ----------------------------*/
+/* For TM_PWM_Channel_x and TM_PWM_PinsPack_x look at tm_stm32f4_pwm.h */
+#define SERVO_CHANNEL TM_PWM_Channel_2
+#define SERVO_PINSPACK TM_PWM_PinsPack_1
+
+#define SERVO_TIM TIM1
 /* ------------------------------------------------------*/
 
 static char message[80];
