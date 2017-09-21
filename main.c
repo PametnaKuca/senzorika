@@ -27,21 +27,25 @@ int main()
 *	in order to prevent being halted either by another task or an ISR.
 */
 
-//Iskoristi checksumValid kao provjeru ima li smisla slati podatke ili grešku
 void dht_task(void *prvParams)
 {
 	while(1)
     {
         bool checksumValid;
-        temperature = humidity = 0;
         GPIO_SetBits(LEDPORT, LED4PIN);
-			
+				
+				// For every defined pin, read again, but after get functions.
         vTaskPrioritySet(NULL, 3);
         checksumValid=DHT22_Read(DHT22_DATA_PIN1);
         vTaskPrioritySet(NULL, 2);
-			
-        temperature+=DHT22getTemperature();
-        humidity+=DHT22getHumidity();
+				
+				// Check whether the reading is valid. If so, send new data.
+				// Otherwise send last recorded data.
+				if(checksumValid)
+				{
+        temperature=DHT22getTemperature();
+        humidity=DHT22getHumidity();
+				}
 			
         GPIO_ResetBits(LEDPORT, LED4PIN);
 				
@@ -64,7 +68,8 @@ void space_mapping(void *prvParameters)
 	static float distance;
 	
 	//Initial space mapping. Measure distance for every angle in both directions
-	//and take the mean value as a measured data.
+	//and take the mean value as a measured data. During that time all other tasks
+	//are suspended.
 	int positionNum=ANGLEmax/ANGLE;
 	float initial_map[positionNum+1];
 	
@@ -140,7 +145,7 @@ void rfid_task(void *prvParameters)
         if(TM_MFRC522_Check(id)==MI_OK){
 						//Privremeni ispis
 						sprintf(message, "ID: %d %d %d %d %d\n\r", id[0],id[1],id[2],id[3],id[4]);
-						sendToUart(&message[0]);
+						//sendToUartText(&message[0]);
 					
             //check if user is valid
             if(isUserValid(&allUsers[0], numberOfUsers, &id[0])){

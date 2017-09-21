@@ -58,7 +58,7 @@
 
 #define DHT22_TIM	TIM2
 #define DHT22RCC RCC_APB1Periph_TIM2
-#define DHT22_REFRESHRATE 10000	//refresh rate in ms
+#define DHT22_REFRESHRATE 5000	//refresh rate in ms
 /* ------------------------------------------------------*/
 
 /* HCSR ultrasonic sensor port, pins and timer ----------*/

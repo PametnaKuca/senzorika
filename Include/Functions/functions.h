@@ -23,7 +23,7 @@ typedef struct UserStruct {
 *	This function is used to send a string of chars to the serial port.
 *	@param	first	Pointer to the first element of the input char array.
 */
-void sendToUart(char *);
+void sendToUart(char character);
 /**
 *	This function compares the input card ID with every users' card ID to see if the card belongs to a valid user.
 *	@param	User list and ID	Pointer to the first element of the input array.

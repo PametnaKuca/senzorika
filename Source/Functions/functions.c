@@ -9,7 +9,7 @@
 #include "functions.h"
 #include "string.h"
 
-void sendToUart(char *first)
+void sendToUartText(char *first)
 {
 	while(*(first)!=0)
 	{
@@ -18,6 +18,13 @@ void sendToUart(char *first)
 		while(!USART_GetFlagStatus(USARTID, USART_FLAG_TC));
 		first++;
 	}
+}
+
+void sendToUart(char character)
+{		
+		while(!USART_FLAG_TXE);
+		USART_SendData(USARTID, character);
+		while(!USART_GetFlagStatus(USARTID, USART_FLAG_TC));
 }
 
 bool compareID(uint8_t *id1, uint8_t *id2)
@@ -109,16 +116,15 @@ void writeSuperUser(User *superUser)
 
 void sendDHT22(float temperature, float humidity)
 {
-		//Probni ispis
-		sprintf(message, "Temperature: %.5f Humidity: %.5f\n\r", temperature, humidity);
-		sendToUart(&message[0]);
+	sprintf(message, "%f,%f",temperature,humidity);
+	sendToUartText(&message[0]);
 }
 
 void sendDistance(float distance, int position)
 {
 		//Probni ispis
 		sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
-		sendToUart(&message[0]);
+		//sendToUartText(&message[0]);
 }
 
 void sendInitialMap(float *mapArray)
