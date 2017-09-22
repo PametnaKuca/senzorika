@@ -14,8 +14,8 @@ int main()
 		USART_Config();
 	
 		xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
-		xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
-		xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+		//xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
+		//xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	
 		vTaskStartScheduler();
 		while(1);
@@ -73,7 +73,7 @@ void space_mapping(void *prvParameters)
 	int positionNum=ANGLEmax/ANGLE;
 	float initial_map[positionNum+1];
 	
-	vTaskSuspendAll ();
+	/*vTaskSuspendAll ();
 	while(position<=ANGLEmax)
 	{
 		GPIO_SetBits(LEDPORT, LED2PIN);
@@ -83,42 +83,41 @@ void space_mapping(void *prvParameters)
 		position+=ANGLE;
 	}
 	sendInitialMap(&initial_map[0]);
-	xTaskResumeAll ();
+	xTaskResumeAll ();*/
 	
 	while(1)
 	{		
-			if (position >= ANGLEmax ) //In final position change the direction of the motor.
-				{
-					direction=-direction;
-					position=ANGLEmax;   
-				}
-
-				else if ( position <= 0 ) //In final position change the direction of the motor.
-				{
-					direction=-direction;
-					position=0;     
-				}
-
-				if ( direction > 0)
-				{
-					for (i=0;i<number;i++) move_positive();  //Move the sensor in positive direction.
-					position+=ANGLE;									
-				}
-
-				else
-				{
-					for (i=0;i<number;i++) move_negative();  //Move the sensor in negative direction.
-					position-=ANGLE;									 
-				}
+			
+			GPIO_SetBits(LEDPORT, LED2PIN);
+			distance = TM_HCSR04_Read(&HCSR04);
+			GPIO_ResetBits(LEDPORT, LED2PIN);
 				
-				GPIO_SetBits(LEDPORT, LED2PIN);
-				distance = TM_HCSR04_Read(&HCSR04);
-				GPIO_ResetBits(LEDPORT, LED2PIN);
+			vTaskDelay(10/portTICK_RATE_MS);
+			//if(abs(distance-initial_map[position/ANGLE]) > DISTANCE_ERROR)
+				sendDistance(distance,position);
+			vTaskDelay(HCSR_REFRESHRATE/portTICK_RATE_MS);
 				
-				vTaskDelay(10/portTICK_RATE_MS);
-				if(abs(distance-initial_map[position/ANGLE]) > DISTANCE_ERROR)
-					sendDistance(distance,position);
-				vTaskDelay(HCSR_REFRESHRATE/portTICK_RATE_MS);
+			if(position >= ANGLEmax) //In final position change the direction of the motor.
+			{
+				direction=-direction;
+				position=ANGLEmax;   
+			}
+			else if(position < 0) //In final position change the direction of the motor.
+			{
+				direction=-direction;
+				position=0;     
+			}
+			
+			if(direction > 0)
+			{
+				for(i=0;i<number;i++) move_positive();  //Move the sensor in positive direction.
+				position+=ANGLE;									
+			}
+			else
+			{
+				for(i=0;i<number;i++) move_negative();  //Move the sensor in negative direction.
+				position-=ANGLE;									 
+			}
 	}
 }
 

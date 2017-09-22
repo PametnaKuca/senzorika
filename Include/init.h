@@ -62,10 +62,10 @@
 /* ------------------------------------------------------*/
 
 /* HCSR ultrasonic sensor port, pins and timer ----------*/
-#define HCSRPORT GPIOE
+#define HCSRPORT GPIOC
 #define HCSR_RCC 	RCC_AHB1Periph_GPIOC
-#define HCSR_ECHO_PIN	GPIO_Pin_7
-#define HCSR_TRIG_PIN GPIO_Pin_8
+#define HCSR_ECHO_PIN	GPIO_Pin_5
+#define HCSR_TRIG_PIN GPIO_Pin_4
 
 #define TM_DELAY_TIM	TIM4
 #define TM_DELAY_TIM_IRQ	TIM4_IRQn
@@ -108,7 +108,13 @@
 #define SERVO_TIM TIM1
 /* ------------------------------------------------------*/
 
-static char message[80];
+/* Protocol data ID list --------------------------------*/
+#define DHT_ID 0x1
+#define INITIAL_MAP_ID 0x2
+#define MAP_ERROR_ID 0x26
+/* ------------------------------------------------------*/
+
+static char message[80]; //Promijeni
 void gpio_init(void);
 void flash_init(void);
 void USART_Config(void);

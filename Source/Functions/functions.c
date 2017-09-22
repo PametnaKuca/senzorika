@@ -20,13 +20,6 @@ void sendToUartText(char *first)
 	}
 }
 
-void sendToUart(char character)
-{		
-		while(!USART_FLAG_TXE);
-		USART_SendData(USARTID, character);
-		while(!USART_GetFlagStatus(USARTID, USART_FLAG_TC));
-}
-
 bool compareID(uint8_t *id1, uint8_t *id2)
 {
 	if(*id1 == *id2 &&
@@ -116,23 +109,36 @@ void writeSuperUser(User *superUser)
 
 void sendDHT22(float temperature, float humidity)
 {
-	sprintf(message, "%f,%f",temperature,humidity);
-	sendToUartText(&message[0]);
+	char message[20];
+	char id[] = {DHT_ID, '\0'};
+	sprintf(message, "%.5f,%.5f",temperature,humidity);
+	strcat(id,message);
+	sendToUartText(&id[0]);
 }
 
 void sendDistance(float distance, int position)
 {
-		//Probni ispis
-		sprintf(message, "Distance:\t %.5f\t Angle: %d\n\r", distance, position);
-		//sendToUartText(&message[0]);
+		char message[20];
+		char id[] = {MAP_ERROR_ID, '\0'};
+		sprintf(message, "%.5f:%.5f\n\r", (float)position,distance);
+		strcat(id,message);
+		sendToUartText(&id[0]);
 }
 
 void sendInitialMap(float *mapArray)
 {
-		int number = ANGLEmax/ANGLE, position = 0;
-		for(int i=0;i<number+1;i++)
+		int number = ANGLEmax/ANGLE, i;
+		float position = 0;
+		char message[number*20], tempData[20];
+		char id[] = {INITIAL_MAP_ID, '\0'};
+		for(i=0;i<number;i++)
 		{
-			sendDistance(*(mapArray+i), position);
+			sprintf(tempData,"%.5f:%.5f,", position, *(mapArray+i));
+			strcat(message,tempData);
 			position+=ANGLE;
 		}
+		sprintf(tempData,"%.5f:%.5f", position, *(mapArray+i));
+		strcat(message,tempData);
+		strcat(id,message);
+		sendToUartText(&id[0]);
 }
