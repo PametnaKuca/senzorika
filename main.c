@@ -56,34 +56,36 @@ void dht_task(void *prvParams)
 }
 
 /**
-* The space_mapping task executes periodically and performs two actions. It moves the step motor in 360° range. On top of that motor
+* The space_mapping task executes periodically and performs two actions. It moves the step motor in 180° range. On top of that motor
 * there is ultrosonic sensor which reads the distance from the nearest object for every step of the rotation. Step of the rotation is 
 * defined in step_motor.h.
 **/
 
 void space_mapping(void *prvParameters)
 {
-	static int i,j,position=0, direction=1;
-	static int number=( gearratio * (ANGLE/ANGLEmin) );
-	static float distance;
+	static int i, direction=1;
+	static int number=(int) ( gearratio * (ANGLE/ANGLEmin) );
+	static float distance, position = 0.0;
 	
 	//Initial space mapping. Measure distance for every angle in both directions
 	//and take the mean value as a measured data. During that time all other tasks
-	//are suspended.
+	//are suspended. After initial scan position and direction are set accordingly.
 	int positionNum=ANGLEmax/ANGLE;
 	float initial_map[positionNum+1];
 	
-	/*vTaskSuspendAll ();
+	vTaskSuspendAll ();
 	while(position<=ANGLEmax)
 	{
 		GPIO_SetBits(LEDPORT, LED2PIN);
-		initial_map[position/ANGLE] = TM_HCSR04_Read(&HCSR04);
+		initial_map[(int)(position/ANGLE)] = TM_HCSR04_Read(&HCSR04);
 		GPIO_ResetBits(LEDPORT, LED2PIN);
 		for (i=0;i<number;i++) move_positive();
 		position+=ANGLE;
 	}
-	sendInitialMap(&initial_map[0]);
-	xTaskResumeAll ();*/
+	position = ANGLEmax;
+	direction = -1;
+	sendInitialMap(&initial_map[0], positionNum);
+	xTaskResumeAll ();
 	
 	while(1)
 	{		
@@ -93,21 +95,10 @@ void space_mapping(void *prvParameters)
 			GPIO_ResetBits(LEDPORT, LED2PIN);
 				
 			vTaskDelay(10/portTICK_RATE_MS);
-			//if(abs(distance-initial_map[position/ANGLE]) > DISTANCE_ERROR)
+			if(abs(distance-initial_map[(int)(position/ANGLE)]) > DISTANCE_ERROR)
 				sendDistance(distance,position);
 			vTaskDelay(HCSR_REFRESHRATE/portTICK_RATE_MS);
-				
-			if(position >= ANGLEmax) //In final position change the direction of the motor.
-			{
-				direction=-direction;
-				position=ANGLEmax;   
-			}
-			else if(position < 0) //In final position change the direction of the motor.
-			{
-				direction=-direction;
-				position=0;     
-			}
-			
+		
 			if(direction > 0)
 			{
 				for(i=0;i<number;i++) move_positive();  //Move the sensor in positive direction.
@@ -117,6 +108,17 @@ void space_mapping(void *prvParameters)
 			{
 				for(i=0;i<number;i++) move_negative();  //Move the sensor in negative direction.
 				position-=ANGLE;									 
+			}
+				
+			if(position >= ANGLEmax) //In final position change the direction of the motor.
+			{
+				direction=-direction;
+				position=ANGLEmax;   
+			}
+			else if(position <= 0) //In final position change the direction of the motor.
+			{
+				direction=-direction;
+				position=0;     
 			}
 	}
 }

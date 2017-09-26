@@ -109,36 +109,36 @@ void writeSuperUser(User *superUser)
 
 void sendDHT22(float temperature, float humidity)
 {
-	char message[20];
+	char message[DATA_STR_LEN+1];
 	char id[] = {DHT_ID, '\0'};
 	sprintf(message, "%.5f,%.5f",temperature,humidity);
 	strcat(id,message);
 	sendToUartText(&id[0]);
 }
 
-void sendDistance(float distance, int position)
+void sendDistance(float distance, float position)
 {
-		char message[20];
+		char message[DATA_STR_LEN+1];
 		char id[] = {MAP_ERROR_ID, '\0'};
-		sprintf(message, "%.5f:%.5f\n\r", (float)position,distance);
+		sprintf(message, "%.5f:%.5f", position,distance);
 		strcat(id,message);
 		sendToUartText(&id[0]);
 }
 
-void sendInitialMap(float *mapArray)
+void sendInitialMap(float *mapArray, int number)
 {
-		int number = ANGLEmax/ANGLE, i;
+		int i;
 		float position = 0;
-		char message[number*20], tempData[20];
-		char id[] = {INITIAL_MAP_ID, '\0'};
+		char tempData[DATA_STR_LEN+1], id[INIT_MAP_STR_LEN + 1];
+		id[0] = INITIAL_MAP_ID;
+		id[1] = '\0';
 		for(i=0;i<number;i++)
 		{
 			sprintf(tempData,"%.5f:%.5f,", position, *(mapArray+i));
-			strcat(message,tempData);
-			position+=ANGLE;
+			strcat(id,tempData);
+			position+=(float)ANGLE;
 		}
-		sprintf(tempData,"%.5f:%.5f", position, *(mapArray+i));
-		strcat(message,tempData);
-		strcat(id,message);
+		sprintf(tempData,"%.5f:%.5f", position, *(mapArray+number));
+		strcat(id,tempData);
 		sendToUartText(&id[0]);
 }

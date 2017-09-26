@@ -111,7 +111,7 @@
 /* Protocol data ID list --------------------------------*/
 #define DHT_ID 0x1
 #define INITIAL_MAP_ID 0x2
-#define MAP_ERROR_ID 0x26
+#define MAP_ERROR_ID 0x3
 /* ------------------------------------------------------*/
 
 static char message[80]; //Promijeni

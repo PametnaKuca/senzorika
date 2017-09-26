@@ -12,6 +12,8 @@
 #include "init.h"
 
 #define NAME_LEN 15
+#define DATA_STR_LEN 20		//length of the string which is sent to uart
+#define INIT_MAP_STR_LEN 	DATA_STR_LEN*((int)(ANGLEmax/ANGLE)+1)	//lengt of the string sent to uart which contains initial map
 
 typedef struct UserStruct {
 	uint8_t ID[5];
@@ -55,9 +57,9 @@ void sendDHT22(float temperature, float humidity);
 * and sends it over serial port.
 *	@param distance and position
 */
-void sendDistance(float distance, int position);
+void sendDistance(float distance, float position);
 /**
 * The function sends initial space map over serial port.
 * @param map array, number of array elements
 */
-void sendInitialMap(float *mapArray);
+void sendInitialMap(float *mapArray, int number);
