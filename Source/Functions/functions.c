@@ -75,7 +75,7 @@ uint8_t initSuperUser(User *userArray)
 
 void writeSuperUser(User *superUser)
 {
-		uint32_t startAddress = 0x08008000;
+		uint32_t startAddress = 0x08008000;	//Randomly selected address. It can be any other as well. 
 		uint32_t currAddress = startAddress + 1;
 		uint8_t numberOfUsers = 3;
 	
@@ -109,36 +109,15 @@ void writeSuperUser(User *superUser)
 
 void sendDHT22(float temperature, float humidity)
 {
-	char message[DATA_STR_LEN+1];
-	char id[] = {DHT_ID, '\0'};
-	sprintf(message, "%.5f,%.5f",temperature,humidity);
-	strcat(id,message);
-	sendToUartText(&id[0]);
+		//Implement send function
 }
 
 void sendDistance(float distance, float position)
 {
-		char message[DATA_STR_LEN+1];
-		char id[] = {MAP_ERROR_ID, '\0'};
-		sprintf(message, "%.5f:%.5f", position,distance);
-		strcat(id,message);
-		sendToUartText(&id[0]);
+		//Implement send function
 }
 
 void sendInitialMap(float *mapArray, int number)
 {
-		int i;
-		float position = 0;
-		char tempData[DATA_STR_LEN+1], id[INIT_MAP_STR_LEN + 1];
-		id[0] = INITIAL_MAP_ID;
-		id[1] = '\0';
-		for(i=0;i<number;i++)
-		{
-			sprintf(tempData,"%.5f:%.5f,", position, *(mapArray+i));
-			strcat(id,tempData);
-			position+=(float)ANGLE;
-		}
-		sprintf(tempData,"%.5f:%.5f", position, *(mapArray+number));
-		strcat(id,tempData);
-		sendToUartText(&id[0]);
+		//Implement send function
 }

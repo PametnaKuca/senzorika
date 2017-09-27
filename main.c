@@ -14,8 +14,8 @@ int main()
 		USART_Config();
 	
 		xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
-		//xTaskCreate(rfid_task, "rfid_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
-		//xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
+		xTaskCreate(rfid_task, "rfid_check_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
+		xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	
 		vTaskStartScheduler();
 		while(1);
@@ -124,7 +124,7 @@ void space_mapping(void *prvParameters)
 }
 
 /**
-*	RFID task performs RFID user check, sends data throug serial and decides whether
+*	RFID check task performs RFID user check, sends data throug serial and decides whether
 * to let the user in( to open a ramp) or not.
 */
 
@@ -143,11 +143,7 @@ void rfid_task(void *prvParameters)
   while(1)
     {
         //checks if card is present
-        if(TM_MFRC522_Check(id)==MI_OK){
-						//Privremeni ispis
-						sprintf(message, "ID: %d %d %d %d %d\n\r", id[0],id[1],id[2],id[3],id[4]);
-						//sendToUartText(&message[0]);
-					
+        if(TM_MFRC522_Check(id)==MI_OK){			
             //check if user is valid
             if(isUserValid(&allUsers[0], numberOfUsers, &id[0])){
                 GPIO_SetBits(LEDPORT,LED1PIN);

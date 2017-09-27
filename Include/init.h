@@ -102,7 +102,7 @@
 
 /* Servo motor port and pins ----------------------------*/
 /* For TM_PWM_Channel_x and TM_PWM_PinsPack_x look at tm_stm32f4_pwm.h */
-#define SERVO_CHANNEL TM_PWM_Channel_2
+#define SERVO_CHANNEL TM_PWM_Channel_2	//This sets servo pwm pin to PA9
 #define SERVO_PINSPACK TM_PWM_PinsPack_1
 
 #define SERVO_TIM TIM1
@@ -112,6 +112,7 @@
 #define DHT_ID 0x1
 #define INITIAL_MAP_ID 0x2
 #define MAP_ERROR_ID 0x3
+#define RFID_ID 0x4
 /* ------------------------------------------------------*/
 
 static char message[80]; //Promijeni
