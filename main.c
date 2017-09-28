@@ -13,8 +13,8 @@ int main()
 		TM_MFRC522_Init(); 		//rfid module init
 		USART_Config();
 	
-		xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
-		xTaskCreate(rfid_task, "rfid_check_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
+		//xTaskCreate(space_mapping, "space_mapping_task", STACK_SIZE_MIN, NULL, 2, &HCSRHhandle);
+		//xTaskCreate(rfid_task, "rfid_check_task", STACK_SIZE_MIN, NULL, 3, &RFIDhandle);
 		xTaskCreate(dht_task, "dht task", STACK_SIZE_MIN, NULL, 2, &tHandDHT);
 	
 		vTaskStartScheduler();

@@ -10,6 +10,7 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_flash.h"
 #include "init.h"
+#include "package.h"
 
 #define NAME_LEN 15
 #define DATA_STR_LEN 20		//length of the string which is sent to uart
@@ -25,7 +26,7 @@ typedef struct UserStruct {
 *	This function is used to send a string of chars to the serial port.
 *	@param	first	Pointer to the first element of the input char array.
 */
-void sendToUart(char character);
+void sendToUart(char *first);
 /**
 *	This function compares the input card ID with every users' card ID to see if the card belongs to a valid user.
 *	@param	User list and ID	Pointer to the first element of the input array.

@@ -519,6 +519,11 @@
               <FileType>5</FileType>
               <FilePath>.\Include\Functions\step_motor.h</FilePath>
             </File>
+            <File>
+              <FileName>package.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Include\Functions\package.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -538,6 +543,11 @@
               <FileName>step_motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\Functions\step_motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>package.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Functions\package.c</FilePath>
             </File>
           </Files>
         </Group>

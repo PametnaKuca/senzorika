@@ -9,7 +9,7 @@
 #include "functions.h"
 #include "string.h"
 
-void sendToUartText(char *first)
+void sendToUart(char *first)
 {
 	while(*(first)!=0)
 	{
@@ -109,7 +109,13 @@ void writeSuperUser(User *superUser)
 
 void sendDHT22(float temperature, float humidity)
 {
-		//Implement send function
+		char data[DATA_STR_LEN+1];
+		char *message;
+		uint8_t subID = 38;
+		uint8_t ctrl = 42;
+		sprintf(data, "%.3f,%.3f", temperature, humidity);
+		message = createPackage(DHT_ID, subID, ctrl, data);
+		sendToUart(message);	
 }
 
 void sendDistance(float distance, float position)

@@ -22,6 +22,7 @@
 ".\objects\dht22.o"
 ".\objects\functions.o"
 ".\objects\step_motor.o"
+".\objects\package.o"
 ".\objects\gpio.o"
 ".\objects\tm_stm32f4_am2301.o"
 ".\objects\tm_stm32f4_button.o"
