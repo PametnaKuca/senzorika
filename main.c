@@ -49,7 +49,7 @@ void dht_task(void *prvParams)
 			
         GPIO_ResetBits(LEDPORT, LED4PIN);
 				
-				sendDHT22(temperature,humidity, DHT_SUB_ID0);	
+				sendDHT22(temperature,humidity, DHT_SUB_ID0);
 				
         vTaskDelay(DHT22_REFRESHRATE/portTICK_RATE_MS);
 		}
