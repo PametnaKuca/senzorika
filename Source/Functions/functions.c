@@ -107,13 +107,12 @@ void writeSuperUser(User *superUser)
 		FLASH_Lock();	
 }
 
-void sendDHT22(float temperature, float humidity)
+void sendDHT22(float temperature, float humidity, uint8_t subID)
 {
 		char data[DATA_STR_LEN+1];
 		char *message;
-		uint8_t subID = 38;
-		uint8_t ctrl = 42;
-		sprintf(data, "%.3f,%.3f", temperature, humidity);
+		uint8_t ctrl = 0x0;				//Defines type of a message. For instance, this means data message.
+		sprintf(data, "%.3f,%.3f", temperature, humidity); //Add temperature and humidity divided by comma.
 		message = createPackage(DHT_ID, subID, ctrl, data);
 		sendToUart(message);	
 }

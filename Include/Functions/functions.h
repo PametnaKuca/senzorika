@@ -50,9 +50,9 @@ void writeSuperUser(User *superUser);
 /**
 *	The function packs temperature and humidtiy into requested data form
 * and sends it over serial port.
-* @param temperature and humidity
+* @param temperature, humidity and subID
 */
-void sendDHT22(float temperature, float humidity);
+void sendDHT22(float temperature, float humidity, uint8_t subID);
 /**
 *	The functions packs distance and position into requested data form
 * and sends it over serial port.
